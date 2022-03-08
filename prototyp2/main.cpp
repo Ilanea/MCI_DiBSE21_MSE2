@@ -1,8 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include "character.h"
-#include "hero.h"
-#include "item.h"
 
 using namespace std;
 
@@ -12,8 +10,8 @@ int main() {
     srand(time(nullptr));
 
     Hero hero;
-    Character enemy;
-    Character enemy1;
+    Character enemy_matthias;
+    Character enemy_pascal;
     Item item;
 
     Hero annina;
@@ -22,25 +20,25 @@ int main() {
     hero.addEquipmentItem(item);
 
     Character matthias;
-    enemy.initCharacter("Matthias", 50, 71);
+    enemy_matthias.initCharacter("Matthias", 50, 71);
     item.initItem("C++ Buch", 1000);
-    enemy.addInventoryItem(item);
+    enemy_matthias.addInventoryItem(item);
     item.initItem("Magischer Compiler", 1001);
-    enemy.addInventoryItem(item);
+    enemy_matthias.addInventoryItem(item);
 
 
     Character pascal;
-    enemy1.initCharacter("Pascal", 100, 27);
+    enemy_pascal.initCharacter("Pascal", 100, 27);
     item.initItem("Mathe Wissenstrank", 10000);
-    enemy1.addInventoryItem(item);
+    enemy_pascal.addInventoryItem(item);
     item.initItem("Taschenrechner", 5);
-    enemy1.addInventoryItem(item);
+    enemy_pascal.addInventoryItem(item);
 
 
-    if(hero.fight(hero, enemy)){
-        cout << enemy.getCharacterName(enemy) << " fiel in Ohnmacht! " << hero.getHeroName(hero) << " hat noch " << hero.getHealthPoints(hero) << " Lebenspunkte uebrig!" << endl;
+    if(hero.fight(hero, enemy_matthias)){
+        cout << enemy_matthias.getCharacterName(enemy_matthias) << " fiel in Ohnmacht! " << hero.getHeroName(hero) << " hat noch " << hero.getHealthPoints(hero) << " Lebenspunkte uebrig!" << endl;
         //hero.getAllItems(hero, enemy);
-        hero.getRandomItem(hero, enemy);
+        hero.getRandomItem(hero, enemy_matthias);
     }
     else{
         cout << hero.getHeroName(hero) << " fiel in Ohnmacht!" << endl;
@@ -48,10 +46,10 @@ int main() {
     }
 
 
-    if(hero.fight(hero, enemy1)){
-        cout << enemy1.getCharacterName(enemy1) << " fiel in Ohnmacht! " << hero.getHeroName(hero) << " hat noch " << hero.getHealthPoints(hero) << " Lebenspunkte uebrig!" << endl;
+    if(hero.fight(hero, enemy_pascal)){
+        cout << enemy_pascal.getCharacterName(enemy_pascal) << " fiel in Ohnmacht! " << hero.getHeroName(hero) << " hat noch " << hero.getHealthPoints(hero) << " Lebenspunkte uebrig!" << endl;
         //hero.getAllItems(hero, enemy);
-        hero.getRandomItem(hero, enemy1);
+        hero.getRandomItem(hero, enemy_pascal);
     }
     else{
         cout << hero.getHeroName(hero) << " fiel in Ohnmacht!" << endl;

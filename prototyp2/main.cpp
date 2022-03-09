@@ -34,7 +34,7 @@ int main() {
 
     if(annina.fight(annina, enemy_matthias)){
         cout << enemy_matthias.getCharacterName(enemy_matthias) << " fiel in Ohnmacht! " << annina.getHeroName(annina) << " hat noch " << annina.getHealthPoints(annina) << " Lebenspunkte uebrig!" << endl;
-        //hero.getAllItems(hero, enemy);
+        //annina.getAllItems(annina, enemy_matthias);
         annina.getRandomItem(annina, enemy_matthias);
     }
     else{
@@ -45,7 +45,7 @@ int main() {
 
     if(annina.fight(annina, enemy_pascal)){
         cout << enemy_pascal.getCharacterName(enemy_pascal) << " fiel in Ohnmacht! " << annina.getHeroName(annina) << " hat noch " << annina.getHealthPoints(annina) << " Lebenspunkte uebrig!" << endl;
-        //hero.getAllItems(hero, enemy);
+        //annina.getAllItems(annina, enemy_pascal);
         annina.getRandomItem(annina, enemy_pascal);
     }
     else{

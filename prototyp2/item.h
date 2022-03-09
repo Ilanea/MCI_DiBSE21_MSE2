@@ -21,7 +21,7 @@ private:
 
 public:
 
-    void initItem(const string &name, int gold);
+    void initItem(Item &item, const string &name, int gold);
     void initItem(Item &item);
 
     const string getItemName(){

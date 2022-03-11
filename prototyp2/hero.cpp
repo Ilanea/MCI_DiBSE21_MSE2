@@ -61,6 +61,7 @@ Item Hero::removeEquipmentItem(int slot){
             return this->HeroInventory[slot];
         }
     }
+    return Item();
 }
 
 int Hero::addInventoryItem(Item &item){
@@ -84,6 +85,7 @@ Item Hero::removeInventoryItem(int slot){
             return this->HeroInventory[slot];
         }
     }
+    return Item();
 }
 
 void Hero::getAllItems(Hero &hero, Character &enemy){

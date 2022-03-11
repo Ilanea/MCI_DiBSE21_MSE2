@@ -58,4 +58,5 @@ Item Character::removeInventoryItem(int slot){
             return this->CharacterInventory[slot];
         }
     }
+    return Item();
 }

@@ -50,11 +50,12 @@ int Character::addInventoryItem(Item &item){
     return -1;
 }
 
-Item *Character::removeInventoryItem(int slot){
-    if(this->CharacterInventory[slot].getItemValidity()){
-        this->CharacterInventory[slot].setItemValidity(false);
-        cout << "Der Gegenstand \"" << this->CharacterInventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->CharacterName << " entfernt." << endl;
-        return &this->CharacterInventory[slot];
+Item Character::removeInventoryItem(int slot){
+    if(slot >= 0 && slot <=9){
+        if(this->CharacterInventory[slot].getItemValidity()){
+            this->CharacterInventory[slot].setItemValidity(false);
+            cout << "Der Gegenstand \"" << this->CharacterInventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->CharacterName << " entfernt." << endl;
+            return this->CharacterInventory[slot];
+        }
     }
-    return nullptr;
 }

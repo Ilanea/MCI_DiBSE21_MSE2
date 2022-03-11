@@ -52,13 +52,15 @@ int Hero::addEquipmentItem(Item &item){
     return -1;
 }
 
-Item *Hero::removeEquipmentItem(int slot){
-    if(this->HeroInventory[slot].getItemValidity() && this->HeroInventory[slot].getEquipmentItem()){
-        this->HeroInventory[slot].setItemValidity(false);
-        cout << "Der Gegenstand \"" << this->HeroInventory[slot].getItemName() << "\" wurde aus dem Equipment von " << this->HeroName << " entfernt." << endl;
-        return &this->HeroInventory[slot];
+Item Hero::removeEquipmentItem(int slot){
+    if(slot >= 0 && slot <=9) {
+        if (this->HeroInventory[slot].getItemValidity() && this->HeroInventory[slot].getEquipmentItem()) {
+            this->HeroInventory[slot].setItemValidity(false);
+            cout << "Der Gegenstand \"" << this->HeroInventory[slot].getItemName() << "\" wurde aus dem Equipment von "
+                 << this->HeroName << " entfernt." << endl;
+            return this->HeroInventory[slot];
+        }
     }
-    return nullptr;
 }
 
 int Hero::addInventoryItem(Item &item){
@@ -74,13 +76,14 @@ int Hero::addInventoryItem(Item &item){
     return -1;
 }
 
-Item *Hero::removeInventoryItem(int slot){
-    if(this->HeroInventory[slot].getItemValidity()){
-        this->HeroInventory[slot].setItemValidity(false);
-        //cout << "Der Gegenstand \"" << this->HeroInventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->HeroName << " entfernt." << endl;
-        return &this->HeroInventory[slot];
+Item Hero::removeInventoryItem(int slot){
+    if(slot >= 0 && slot <=9) {
+        if (this->HeroInventory[slot].getItemValidity()) {
+            this->HeroInventory[slot].setItemValidity(false);
+            //cout << "Der Gegenstand \"" << this->HeroInventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->HeroName << " entfernt." << endl;
+            return this->HeroInventory[slot];
+        }
     }
-    return nullptr;
 }
 
 void Hero::getAllItems(Hero &hero, Character &enemy){

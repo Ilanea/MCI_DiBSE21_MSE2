@@ -39,7 +39,7 @@ public:
     void takeDamage(Character &character, const int damage);
     bool checkInventoryItem(const int index);
     int addInventoryItem(Item &item);
-    Item *removeInventoryItem(int CharacterInventorySlot);
+    Item removeInventoryItem(int CharacterInventorySlot);
 
     string getCharacterName(const Character &character){
         return this->CharacterName;

@@ -42,9 +42,9 @@ public:
     bool fight(Hero &hero, Character &enemy);
     void takeDamage(Hero &hero, const int damage);
     int addEquipmentItem(Item &item);
-    Item *removeEquipmentItem(int HeroInventorySlot);
+    Item removeEquipmentItem(int HeroInventorySlot);
     int addInventoryItem(Item &item);
-    Item *removeInventoryItem(int HeroInventorySlot);
+    Item removeInventoryItem(int HeroInventorySlot);
     void getAllItems(Hero &hero, Character &enemy);
     void getRandomItem(Hero &hero, Character &enemy);
     void sellAllItems(Hero &hero, int index);

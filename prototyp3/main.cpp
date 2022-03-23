@@ -13,7 +13,9 @@ int main() {
 
     srand(time(nullptr));
 
-    Hero annina("Annina", 300, 90, 5, 5);
+
+
+    Hero annina("Annina", 100, 90, 5, 5);
     Item zauberstab((Item &) annina, "Zauberstab", 1000);
     annina.addEquipmentItem(zauberstab);
 

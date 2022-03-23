@@ -6,22 +6,23 @@
 #include <cstdlib>
 #include "character.h"
 #include "hero.h"
+#include "fighter.h"
+#include "sorcerer.h"
 
 using namespace std;
 
-
 bool Hero::fight(Hero &hero, Character &enemy){
     do{
-        hero.attack(hero, static_cast<Hero &>(enemy));
+        this->attack(hero, static_cast<Hero &>(enemy));
         if (enemy.getHealthPoints(enemy) > 0) {
-            enemy.attack(static_cast<Hero &>(enemy), hero);
+            this->attack(static_cast<Hero &>(enemy), hero);
         }
         else{
-            break;
+            return true;
         }
     }while(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy) > 0);
 
-    return hero.getHealthPoints(hero);
+    return false;
 }
 
 

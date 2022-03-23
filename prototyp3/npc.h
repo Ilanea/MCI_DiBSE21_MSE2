@@ -22,10 +22,16 @@ public:
     using Character::Character;
 
     //Destruktor
-    ~NPC()= default;
+    ~NPC() {
+        cout << "Der Gegner " << this->Name << " fiel in ein tiefes Loch und wurde nie wieder gesehen!" << endl;
+    }
 
     void setClass(const int newClass){
         this->Class = newClass;
+    }
+
+    int getClass(Character &character){
+        return this->Class;
     }
 
 };

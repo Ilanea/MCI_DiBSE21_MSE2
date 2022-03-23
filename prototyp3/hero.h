@@ -9,6 +9,8 @@
 #include <cstring>
 #include "item.h"
 #include "character.h"
+#include "fighter.h"
+#include "sorcerer.h"
 
 using namespace std;
 
@@ -28,7 +30,6 @@ public:
     void retrieveRandomLoot(Hero &hero, Character &enemy);
     void sellAllItems(Hero &hero, int index);
     void sellLootItems(Hero &hero, int index);
-
 
 };
 

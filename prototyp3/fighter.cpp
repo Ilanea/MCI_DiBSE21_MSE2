@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <cstdlib>
+#include "character.h"
 #include "hero.h"
 #include "fighter.h"
 

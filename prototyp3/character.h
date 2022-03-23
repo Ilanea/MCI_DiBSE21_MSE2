@@ -47,9 +47,9 @@ public:
     }
 
     //Destruktor
-    ~Character()= default;
+    virtual ~Character()= default;
 
-    void attack(Hero &hero, Character &enemy);
+    virtual void attack(Hero &hero, Character &enemy);
     void takeDamage(Character &character, const int damage);
     bool checkInventoryItem(const int index);
     int addInventoryItem(Item &item);
@@ -81,6 +81,8 @@ public:
         return &Inventory[index];
     }
 };
+
+ostream &operator<<(ostream &out, const Character &c);
 
 
 #endif //PROTOTYP3_CHARACTER_H

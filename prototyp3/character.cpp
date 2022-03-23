@@ -11,13 +11,15 @@
 using namespace std;
 
 void Character::attack(Hero &hero, Character &enemy){
-    int damage = 15 + rand() % 25 - getArmor(enemy);
-    if(damage >= 0){
-        enemy.takeDamage(enemy, damage);
-        cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
-    }
-    else{
-        cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
+    if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
+        int damage = 15 + rand() % 25 - getArmor(enemy);
+        if(damage >= 0){
+            enemy.takeDamage(enemy, damage);
+            cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
+        }
+        else{
+            cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
+        }
     }
 }
 

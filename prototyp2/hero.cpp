@@ -33,9 +33,12 @@ bool Hero::fight(Hero &hero, Character &enemy){
         if (enemy.getHealthPoints(enemy) > 0) {
             enemy.attack(enemy, hero);
         }
+        else{
+            return true;
+        }
     }
 
-    return hero.getHealthPoints(hero);
+    return false;
 }
 
 int Hero::addEquipmentItem(Item &item){

@@ -12,7 +12,7 @@ int main() {
     Item item;
 
     Hero annina;
-    annina.initHero("Annina", 300, 90);
+    annina.initHero("Annina", 30, 90);
     item.initItem((Item &) annina, "Zauberstab", 1000);
     annina.addEquipmentItem(item);
 

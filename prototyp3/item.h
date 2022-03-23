@@ -6,7 +6,7 @@
 #define PROTOTYP3_ITEM_H
 
 
-#include <string.h>
+#include <cstring>
 
 using namespace std;
 
@@ -23,17 +23,19 @@ private:
 public:
 
     //Konstruktor
-    /*Item(Item &item, const string &name, const int gold) : ItemName(name), ItemGold(gold), isValid(true) {
+    Item(){};
+
+    Item(Item &item, const string &name, const int gold) : ItemName(name), ItemGold(gold), isValid(true) {
         cout << "Calling Item::Constructor" << std::endl;
     }
 
     //Destruktor
     ~Item(){
 
-    }*/
+    }
 
-    void initItem(Item &item, const string &name, int gold);
-    void initItem(Item &item);
+    //void initItem(Item &item, const string &name, int gold);
+    //void initItem(Item &item);
 
     const string getItemName(){
         return this->ItemName;

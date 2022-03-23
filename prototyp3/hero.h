@@ -6,7 +6,7 @@
 #define PROTOTYP3_HERO_H
 
 
-#include <string.h>
+#include <cstring>
 #include "item.h"
 #include "character.h"
 
@@ -19,17 +19,15 @@ public:
     using Character::Character;
 
     //Destruktor
-    ~Hero(){
-
+    ~Hero() {
+        cout << "Unsere Heldin " << this->Name << " verabschiedet sich vom Spiel und reitet in den Sonnenuntergang!" << endl;
     }
 
-    void attack(Hero &hero, Character &enemy);
     bool fight(Hero &hero, Character &enemy);
-    void takeDamage(Hero &hero, const int damage);
-    void getAllItems(Hero &hero, Character &enemy);
-    void getRandomItem(Hero &hero, Character &enemy);
+    void retrieveAllLoot(Hero &hero, Character &enemy);
+    void retrieveRandomLoot(Hero &hero, Character &enemy);
     void sellAllItems(Hero &hero, int index);
-    void sellWonItems(Hero &hero, int index);
+    void sellLootItems(Hero &hero, int index);
 
 
 };

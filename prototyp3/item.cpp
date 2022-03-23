@@ -7,6 +7,7 @@
 
 using namespace std;
 
+/*
 void Item::initItem(Item &item, const string &name, const int gold){
     setItemName(name);
     setItemGold(gold);
@@ -16,3 +17,4 @@ void Item::initItem(Item &item, const string &name, const int gold){
 void Item::initItem(Item &item){
     setItemValidity(false);
 }
+*/

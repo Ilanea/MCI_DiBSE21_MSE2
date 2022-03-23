@@ -5,10 +5,11 @@
 #ifndef PROTOTYP3_CHARACTER_H
 #define PROTOTYP3_CHARACTER_H
 
-#include <string.h>
+#include <cstring>
 #include "item.h"
-//#include "hero.h"
 
+
+#define INVENTORY_SIZE  10
 
 using namespace std;
 
@@ -17,18 +18,15 @@ class Hero;
 class Character
 {
 
-private:
+protected:
     string Name;
     int HealthPoints;
     int Gold;
     int Armor;
     int MagicResistance;
+    Item Inventory[INVENTORY_SIZE] = {};
 
-
-protected:
-    Item Inventory[10];
-
-    void setName(const string newName){
+    void setName(const string &newName){
         this->Name = newName;
     }
 
@@ -40,19 +38,18 @@ protected:
         this->Gold = newGold;
     }
 
+
 public:
 
     //Konstruktor
-    Character(const string &name, const int hp, const int gold) : Name(name), HealthPoints(hp), Gold(gold) {
+    Character(const string &name, const int hp, const int gold, const int armor, const int magicresistance) : Name(name), HealthPoints(hp), Gold(gold), Armor(armor), MagicResistance(magicresistance), Inventory() {
         cout << "Calling Character::Constructor" << std::endl;
     }
 
     //Destruktor
-    ~Character(){
+    ~Character()= default;
 
-    }
-
-    void attack(Character &character, Hero &hero);
+    void attack(Hero &hero, Character &enemy);
     void takeDamage(Character &character, const int damage);
     bool checkInventoryItem(const int index);
     int addInventoryItem(Item &item);
@@ -70,6 +67,14 @@ public:
 
     int getGold(const Character &character){
         return this->Gold;
+    }
+
+    int getArmor(const Character &character){
+        return this->Armor;
+    }
+
+    int getMagicResistance(const Character &character){
+        return this->MagicResistance;
     }
 
     Item *getInventoryItem(int index){

@@ -7,13 +7,17 @@
 #include "character.h"
 #include "hero.h"
 
+
 using namespace std;
 
-void Character::attack(Character &character, Hero &hero){
-    if(hero.getHealthPoints(hero) > 0) {
-        int damage = 5 + rand() % 11;
-        cout << character.getName(character) << " trifft " << hero.getName(hero) << " fuer " << damage << " Lebenspunkte!" << endl;
-        hero.takeDamage(hero, damage);
+void Character::attack(Hero &hero, Character &enemy){
+    int damage = 15 + rand() % 25 - getArmor(enemy);
+    if(damage >= 0){
+        enemy.takeDamage(enemy, damage);
+        cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
+    }
+    else{
+        cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
     }
 }
 
@@ -32,7 +36,7 @@ bool Character::checkInventoryItem(const int index){
 }
 
 int Character::addInventoryItem(Item &item){
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < INVENTORY_SIZE; i++) {
         if (!Inventory[i].getItemValidity()) {
             this->Inventory[i].setItemName(item.getItemName());
             this->Inventory[i].setItemGold(item.getItemGold());
@@ -45,7 +49,7 @@ int Character::addInventoryItem(Item &item){
 }
 
 Item Character::removeInventoryItem(int slot){
-    if(slot >= 0 && slot <=9){
+    if(slot >= 0 && slot <=INVENTORY_SIZE-1){
         if(this->Inventory[slot].getItemValidity()){
             this->Inventory[slot].setItemValidity(false);
             cout << "Der Gegenstand \"" << this->Inventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->Name << " entfernt." << endl;
@@ -56,7 +60,7 @@ Item Character::removeInventoryItem(int slot){
 }
 
 int Character::addEquipmentItem(Item &item){
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < INVENTORY_SIZE; i++) {
         if (!Inventory[i].getItemValidity()) {
             this->Inventory[i].setItemName(item.getItemName());
             this->Inventory[i].setItemGold(item.getItemGold());
@@ -70,7 +74,7 @@ int Character::addEquipmentItem(Item &item){
 }
 
 Item Character::removeEquipmentItem(int slot){
-    if(slot >= 0 && slot <=9) {
+    if(slot >= 0 && slot <=INVENTORY_SIZE-1) {
         if (this->Inventory[slot].getItemValidity() && this->Inventory[slot].getEquipmentItem()) {
             this->Inventory[slot].setItemValidity(false);
             cout << "Der Gegenstand \"" << this->Inventory[slot].getItemName() << "\" wurde aus dem Equipment von "

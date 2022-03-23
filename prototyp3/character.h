@@ -30,10 +30,6 @@ protected:
         this->Name = newName;
     }
 
-    void setHealthPoints(const int newHealthPoints){
-        this->HealthPoints = newHealthPoints;
-    }
-
     void setGold(const int newGold){
         this->Gold = newGold;
     }
@@ -49,8 +45,7 @@ public:
     //Destruktor
     virtual ~Character()= default;
 
-    virtual void attack(Hero &hero, Character &enemy);
-    void takeDamage(Character &character, const int damage);
+    virtual void attack(Hero &hero, Character &enemy) = 0;
     bool checkInventoryItem(const int index);
     int addInventoryItem(Item &item);
     Item removeInventoryItem(int CharacterInventorySlot);
@@ -63,6 +58,10 @@ public:
 
     int getHealthPoints(const Character &character){
         return this->HealthPoints;
+    }
+
+    void setHealthPoints(const int newHealthPoints){
+        this->HealthPoints = newHealthPoints;
     }
 
     int getGold(const Character &character){

@@ -5,10 +5,10 @@
 #include <iostream>
 #include <cstdlib>
 #include "hero.h"
-#include "sorcerer.h"
 
 void Sorcerer::attack(Hero &hero, Character &enemy){
-    int damage = 5 + rand() % 10 + getMagicPower(hero) - getMagicResistance(enemy);
-    enemy.takeDamage(enemy, damage);
+    int damage = 5 + rand() % 10 + getMagicPower(enemy) - getMagicResistance(hero);
+    int newHP = hero.getHealthPoints(hero) - damage;
+    hero.setHealthPoints(newHP);
     cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte! - Magieschaden" << endl;
 }

@@ -13,19 +13,15 @@ using namespace std;
 void Character::attack(Hero &hero, Character &enemy){
     if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
         int damage = 15 + rand() % 25 - getArmor(enemy);
+        int newHP = hero.getHealthPoints(hero) - damage;
         if(damage >= 0){
-            enemy.takeDamage(enemy, damage);
-            cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
+            hero.setHealthPoints(newHP);
+            cout << enemy.getName(enemy) << " trifft " << hero.getName(hero) << " fuer " << damage << " Lebenspunkte!" << endl;
         }
         else{
-            cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
+            cout << enemy.getName(enemy) << " verfehlt " << hero.getName(hero) << " !" << endl;
         }
     }
-}
-
-void Character::takeDamage(Character &character, const int damage){
-    int new_hp = this->getHealthPoints(character) - damage;
-    this->setHealthPoints(new_hp);
 }
 
 bool Character::checkInventoryItem(const int index){

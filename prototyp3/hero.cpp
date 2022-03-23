@@ -11,11 +11,25 @@
 
 using namespace std;
 
+void Hero::attack(Hero &hero, Character &enemy){
+    if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
+        int damage = 15 + rand() % 25 - getArmor(enemy);
+        int newHP = enemy.getHealthPoints(enemy) - damage;
+        if(damage >= 0){
+            enemy.setHealthPoints(newHP);
+            cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
+        }
+        else{
+            cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
+        }
+    }
+}
+
 bool Hero::fight(Hero &hero, Character &enemy){
     do{
-        this->attack(hero, static_cast<Hero &>(enemy));
+        this->attack(hero, enemy);
         if (enemy.getHealthPoints(enemy) > 0) {
-            this->attack(static_cast<Hero &>(enemy), hero);
+            Character::attack(hero, enemy);
         }
         else{
             return true;

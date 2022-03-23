@@ -15,18 +15,18 @@ int main() {
 
 
 
-    Hero annina("Annina", 100, 90, 5, 5);
+    Hero annina("Annina", 300, 90, 5, 5);
     Item zauberstab((Item &) annina, "Zauberstab", 1000);
     annina.addEquipmentItem(zauberstab);
 
-    Character enemy_matthias("Matthias", 50, 71, 10, 5);
+    Fighter enemy_matthias("Matthias", 50, 71, 10, 5, 100);
     Item buch((Item &) enemy_matthias, "C++ Buch", 1000);
     enemy_matthias.addInventoryItem(buch);
     Item compiler((Item &) enemy_matthias, "Magischer Compiler", 1001);
     enemy_matthias.addInventoryItem(compiler);
 
 
-    Character enemy_pascal("Pascal", 100, 27, 15, 5);
+    Sorcerer enemy_pascal("Pascal", 100, 27, 15, 5, 100);
     Item trank((Item &) enemy_pascal, "Mathe Wissenstrank", 10000);
     enemy_pascal.addInventoryItem(trank);
     Item taschenrechner((Item &) enemy_pascal, "Taschenrechner", 5);
@@ -67,8 +67,7 @@ int main() {
         return 0;
     }
 
-
-    for( int i = 0; i < 10; i++ ){
+    for( int i = 0; i < INVENTORY_SIZE; i++ ){
         annina.sellLootItems(annina, i);
     }
 

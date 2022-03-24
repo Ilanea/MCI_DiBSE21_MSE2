@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/*
 void Character::attack(Hero &hero, Character &enemy){
     if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
         int damage = 15 + rand() % 25 - getArmor(enemy);
@@ -23,6 +24,7 @@ void Character::attack(Hero &hero, Character &enemy){
         }
     }
 }
+*/
 
 bool Character::checkInventoryItem(const int index){
     if (Inventory[index].getItemValidity()) {

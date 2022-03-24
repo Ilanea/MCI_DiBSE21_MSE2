@@ -25,7 +25,7 @@ public:
     //Destruktor
     ~Sorcerer()= default;
 
-    void attack(Hero &hero, Character &enemy) override;
+    virtual void attack(Hero &hero, Character &enemy) override;
 
     int getMagicPower(const Character &character){
         return this->MagicPower;

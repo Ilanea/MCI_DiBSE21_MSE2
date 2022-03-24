@@ -25,7 +25,7 @@ public:
     //Destruktor
     ~Fighter()= default;
 
-    void attack(Hero &hero, Character &enemy) override;
+    virtual void attack(Hero &hero, Character &enemy) override;
 
     int getStrenght(const Character &character){
         return this->Strenght;

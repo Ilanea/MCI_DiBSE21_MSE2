@@ -29,7 +29,7 @@ bool Hero::fight(Hero &hero, Character &enemy){
     do{
         this->attack(hero, enemy);
         if (enemy.getHealthPoints(enemy) > 0) {
-            Character::attack(hero, enemy);
+            enemy.attack(hero, enemy);
         }
         else{
             return true;

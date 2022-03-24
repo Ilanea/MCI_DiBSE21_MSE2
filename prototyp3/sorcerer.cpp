@@ -10,5 +10,5 @@ void Sorcerer::attack(Hero &hero, Character &enemy){
     int damage = 5 + rand() % 10 + getMagicPower(enemy) - getMagicResistance(hero);
     int newHP = hero.getHealthPoints(hero) - damage;
     hero.setHealthPoints(newHP);
-    cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte! - Magieschaden" << endl;
+    cout << enemy.getName(enemy) << " trifft " << hero.getName(hero) << " mit Magieschaden fuer " << damage << " Lebenspunkte!" << endl;
 }

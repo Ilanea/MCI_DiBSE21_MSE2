@@ -3,28 +3,11 @@
 //
 
 #include <iostream>
-#include <cstdlib>
 #include "character.h"
 #include "hero.h"
 
 
 using namespace std;
-
-/*
-void Character::attack(Hero &hero, Character &enemy){
-    if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
-        int damage = 15 + rand() % 25 - getArmor(enemy);
-        int newHP = hero.getHealthPoints(hero) - damage;
-        if(damage >= 0){
-            hero.setHealthPoints(newHP);
-            cout << enemy.getName(enemy) << " trifft " << hero.getName(hero) << " fuer " << damage << " Lebenspunkte!" << endl;
-        }
-        else{
-            cout << enemy.getName(enemy) << " verfehlt " << hero.getName(hero) << " !" << endl;
-        }
-    }
-}
-*/
 
 bool Character::checkInventoryItem(const int index){
     if (Inventory[index].getItemValidity()) {

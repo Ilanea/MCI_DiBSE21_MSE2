@@ -33,4 +33,6 @@ public:
 
 };
 
+ostream &operator<<(ostream &out, const Sorcerer &c);
+
 #endif //PROTOTYP3_SORCERER_H

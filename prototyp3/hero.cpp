@@ -6,14 +6,15 @@
 #include <cstdlib>
 #include "character.h"
 #include "hero.h"
-#include "fighter.h"
-#include "sorcerer.h"
 
 using namespace std;
 
 void Hero::attack(Hero &hero, Character &enemy){
     if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
-        int damage = 15 + rand() % 25 - getArmor(enemy);
+        int damage = rand() % ((25 - 15) + 1) + 15 - enemy.getArmor(enemy);
+        //cout << "-------------------------------------------------------------------------" << endl;
+        //cout << "Armor: " << enemy.getArmor(enemy) << endl;
+        //cout << "Damage: " << damage << endl;
         int newHP = enemy.getHealthPoints(enemy) - damage;
         if(damage >= 0){
             enemy.setHealthPoints(newHP);
@@ -22,6 +23,7 @@ void Hero::attack(Hero &hero, Character &enemy){
         else{
             cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
         }
+        //cout << "-------------------------------------------------------------------------" << endl;
     }
 }
 

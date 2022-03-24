@@ -33,4 +33,6 @@ public:
 
 };
 
+ostream &operator<<(ostream &out, const Fighter &c);
+
 #endif //PROTOTYP3_FIGHTER_H

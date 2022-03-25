@@ -9,6 +9,11 @@
 
 using namespace std;
 
+std::ostream& operator<<(std::ostream& out, Item item) {
+    out << item.getItemName() << " (Gold: " << item.getItemGold() <<  ")";
+    return out;
+}
+
 void Hero::attack(Hero &hero, Character &enemy){
     if(hero.getHealthPoints() > 0 && enemy.getHealthPoints()){
         int damage = rand() % ((25 - 15) + 1) + 15 - enemy.getArmor();
@@ -66,7 +71,7 @@ void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
     }
 }
 
-void Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
+Item Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
     int new_gold = this->getGold() + enemy.getGold();
     hero.setGold(new_gold);
     cout << "Annina stiehlt " << enemy.getName() << " " << enemy.getGold() << " Gold und besitzt nun " << this->getGold() << " Gold." << endl;
@@ -80,6 +85,8 @@ void Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
     }
 
     int randomItem = rand()%enemyItemCount;
+
+    Item loot = *enemy.getInventoryItem(randomItem);
 
     for(int j = 0; j < INVENTORY_SIZE; j++){
         if(!this->Inventory[j].getItemValidity()){
@@ -95,6 +102,8 @@ void Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
             break;
         }
     }
+
+    return loot;
 
 }
 

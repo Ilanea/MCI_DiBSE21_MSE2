@@ -28,7 +28,7 @@ public:
     void attack(Hero &hero, Character &enemy) override;
     bool fight(Hero &hero, Character &enemy);
     void retrieveAllLoot(Hero &hero, Character &enemy);
-    void retrieveRandomLoot(Hero &hero, Character &enemy);
+    Item retrieveRandomLoot(Hero &hero, Character &enemy);
     void sellAllItems(Hero &hero, int index);
     void sellLootItems(Hero &hero, int index);
 

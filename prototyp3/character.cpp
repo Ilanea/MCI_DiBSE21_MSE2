@@ -24,7 +24,7 @@ int Character::addInventoryItem(Item &item){
             this->Inventory[i].setItemName(item.getItemName());
             this->Inventory[i].setItemGold(item.getItemGold());
             this->Inventory[i].setItemValidity(true);
-            cout << "Der Gegenstand \"" << this->Inventory[i].getItemName() << "\" wurde dem Inventar von " << this->Name << " hinzugefuegt." << endl;
+            cout << "Der Gegenstand \"" << this->Inventory[i].getItemName() << "\" wurde dem Inventar von " << this->getName() << " hinzugefuegt." << endl;
             return i;
         }
     }
@@ -35,7 +35,7 @@ Item Character::removeInventoryItem(int slot){
     if(slot >= 0 && slot <=INVENTORY_SIZE-1){
         if(this->Inventory[slot].getItemValidity()){
             this->Inventory[slot].setItemValidity(false);
-            cout << "Der Gegenstand \"" << this->Inventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->Name << " entfernt." << endl;
+            cout << "Der Gegenstand \"" << this->Inventory[slot].getItemName() << "\" wurde aus dem Inventar von " << this->getName() << " entfernt." << endl;
             return this->Inventory[slot];
         }
     }
@@ -49,7 +49,7 @@ int Character::addEquipmentItem(Item &item){
             this->Inventory[i].setItemGold(item.getItemGold());
             this->Inventory[i].setItemValidity(true);
             this->Inventory[i].setEquipmentItem(true);
-            cout << "Der Gegenstand \"" << this->Inventory[i].getItemName() << "\" wurde dem Equipment von " << this->Name << " hinzugefuegt." << endl;
+            cout << "Der Gegenstand \"" << this->Inventory[i].getItemName() << "\" wurde dem Equipment von " << this->getName() << " hinzugefuegt." << endl;
             return i;
         }
     }
@@ -61,7 +61,7 @@ Item Character::removeEquipmentItem(int slot){
         if (this->Inventory[slot].getItemValidity() && this->Inventory[slot].getEquipmentItem()) {
             this->Inventory[slot].setItemValidity(false);
             cout << "Der Gegenstand \"" << this->Inventory[slot].getItemName() << "\" wurde aus dem Equipment von "
-                 << this->Name << " entfernt." << endl;
+                 << this->getName() << " entfernt." << endl;
             return this->Inventory[slot];
         }
     }

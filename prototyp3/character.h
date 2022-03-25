@@ -81,6 +81,4 @@ public:
     }
 };
 
-
-
 #endif //PROTOTYP3_CHARACTER_H

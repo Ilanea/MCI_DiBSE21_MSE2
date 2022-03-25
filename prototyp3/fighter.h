@@ -27,7 +27,7 @@ public:
 
     virtual void attack(Hero &hero, Character &enemy) override;
 
-    int getStrenght(const Character &character){
+    int getStrenght(){
         return this->Strenght;
     }
 

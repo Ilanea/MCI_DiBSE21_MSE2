@@ -52,11 +52,11 @@ public:
     int addEquipmentItem(Item &item);
     Item removeEquipmentItem(int InventorySlot);
 
-    string getName(const Character &character){
+    string getName(){
         return this->Name;
     }
 
-    int getHealthPoints(const Character &character){
+    int getHealthPoints(){
         return this->HealthPoints;
     }
 
@@ -64,15 +64,15 @@ public:
         this->HealthPoints = newHealthPoints;
     }
 
-    int getGold(const Character &character){
+    int getGold(){
         return this->Gold;
     }
 
-    int getArmor(const Character &character){
+    int getArmor(){
         return this->Armor;
     }
 
-    int getMagicResistance(const Character &character){
+    int getMagicResistance(){
         return this->MagicResistance;
     }
 
@@ -81,7 +81,6 @@ public:
     }
 };
 
-ostream &operator<<(ostream &out, const Character &c);
 
 
 #endif //PROTOTYP3_CHARACTER_H

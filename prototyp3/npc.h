@@ -30,10 +30,12 @@ public:
         this->Class = newClass;
     }
 
-    int getClass(Character &character){
+    int getClass(){
         return this->Class;
     }
 
 };
+
+
 
 #endif //PROTOTYP3_NPC_H

@@ -22,7 +22,6 @@ int main() {
     Item compiler((Item &) enemy_matthias, "Magischer Compiler", 1001);
     enemy_matthias.addInventoryItem(compiler);
 
-
     Sorcerer enemy_pascal("Pascal", 100, 27, 15, 5, 50);
     Item trank((Item &) enemy_pascal, "Mathe Wissenstrank", 10000);
     enemy_pascal.addInventoryItem(trank);
@@ -34,33 +33,33 @@ int main() {
     enemy_peter.addInventoryItem(flasche);
 
     if(annina.fight(annina, enemy_matthias)){
-        cout << enemy_matthias.getName(enemy_matthias) << " fiel in Ohnmacht! " << annina.getName(annina) << " hat noch " << annina.getHealthPoints(annina) << " Lebenspunkte uebrig!" << endl;
+        cout << enemy_matthias.getName() << " fiel in Ohnmacht! " << annina.getName() << " hat noch " << annina.getHealthPoints() << " Lebenspunkte uebrig!" << endl;
         //annina.retrieveAllLoot(annina, enemy_matthias);
         annina.retrieveRandomLoot(annina, enemy_matthias);
     }
     else{
-        cout << annina.getName(annina) << " fiel in Ohnmacht!" << endl;
+        cout << annina.getName() << " fiel in Ohnmacht!" << endl;
         return 0;
     }
 
 
     if(annina.fight(annina, enemy_pascal)){
-        cout << enemy_pascal.getName(enemy_pascal) << " fiel in Ohnmacht! " << annina.getName(annina) << " hat noch " << annina.getHealthPoints(annina) << " Lebenspunkte uebrig!" << endl;
+        cout << enemy_pascal.getName() << " fiel in Ohnmacht! " << annina.getName() << " hat noch " << annina.getHealthPoints() << " Lebenspunkte uebrig!" << endl;
         //annina.retrieveAllLoot(annina, enemy_pascal);
         annina.retrieveRandomLoot(annina, enemy_pascal);
     }
     else{
-        cout << annina.getName(annina) << " fiel in Ohnmacht!" << endl;
+        cout << annina.getName() << " fiel in Ohnmacht!" << endl;
         return 0;
     }
 
     if(annina.fight(annina, enemy_peter)){
-        cout << enemy_peter.getName(enemy_peter) << " fiel in Ohnmacht! " << annina.getName(annina) << " hat noch " << annina.getHealthPoints(annina) << " Lebenspunkte uebrig!" << endl;
+        cout << enemy_peter.getName() << " fiel in Ohnmacht! " << annina.getName() << " hat noch " << annina.getHealthPoints() << " Lebenspunkte uebrig!" << endl;
         //annina.retrieveAllLoot(annina, enemy_pascal);
         annina.retrieveRandomLoot(annina, enemy_peter);
     }
     else{
-        cout << annina.getName(annina) << " fiel in Ohnmacht!" << endl;
+        cout << annina.getName() << " fiel in Ohnmacht!" << endl;
         return 0;
     }
 

@@ -10,18 +10,18 @@
 using namespace std;
 
 void Hero::attack(Hero &hero, Character &enemy){
-    if(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy)){
-        int damage = rand() % ((25 - 15) + 1) + 15 - enemy.getArmor(enemy);
+    if(hero.getHealthPoints() > 0 && enemy.getHealthPoints()){
+        int damage = rand() % ((25 - 15) + 1) + 15 - enemy.getArmor();
         //cout << "-------------------------------------------------------------------------" << endl;
         //cout << "Armor: " << enemy.getArmor(enemy) << endl;
         //cout << "Damage: " << damage << endl;
-        int newHP = enemy.getHealthPoints(enemy) - damage;
+        int newHP = enemy.getHealthPoints() - damage;
         if(damage >= 0){
             enemy.setHealthPoints(newHP);
-            cout << hero.getName(hero) << " trifft " << enemy.getName(enemy) << " fuer " << damage << " Lebenspunkte!" << endl;
+            cout << hero.getName() << " trifft " << enemy.getName() << " fuer " << damage << " Lebenspunkte!" << endl;
         }
         else{
-            cout << hero.getName(hero) << " verfehlt " << enemy.getName(enemy) << " !" << endl;
+            cout << hero.getName() << " verfehlt " << enemy.getName() << " !" << endl;
         }
         //cout << "-------------------------------------------------------------------------" << endl;
     }
@@ -30,22 +30,22 @@ void Hero::attack(Hero &hero, Character &enemy){
 bool Hero::fight(Hero &hero, Character &enemy){
     do{
         this->attack(hero, enemy);
-        if (enemy.getHealthPoints(enemy) > 0) {
+        if (enemy.getHealthPoints() > 0) {
             enemy.attack(hero, enemy);
         }
         else{
             return true;
         }
-    }while(hero.getHealthPoints(hero) > 0 && enemy.getHealthPoints(enemy) > 0);
+    }while(hero.getHealthPoints() > 0 && enemy.getHealthPoints() > 0);
 
     return false;
 }
 
 
 void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
-    int new_gold = this->getGold(hero) + enemy.getGold(enemy);
+    int new_gold = this->getGold() + enemy.getGold();
     hero.setGold(new_gold);
-    cout << "Annina stiehlt " << enemy.getName(enemy) << " " << enemy.getGold(enemy) << " Gold und besitzt nun " << this->getGold(hero) << " Gold." << endl;
+    cout << "Annina stiehlt " << enemy.getName() << " " << enemy.getGold() << " Gold und besitzt nun " << this->getGold() << " Gold." << endl;
     for(int i = 0; i < INVENTORY_SIZE; i++){
         if(enemy.checkInventoryItem(i)){
             for(int j = 0; j < INVENTORY_SIZE; j++){
@@ -67,9 +67,9 @@ void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
 }
 
 void Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
-    int new_gold = this->getGold(hero) + enemy.getGold(enemy);
+    int new_gold = this->getGold() + enemy.getGold();
     hero.setGold(new_gold);
-    cout << "Annina stiehlt " << enemy.getName(enemy) << " " << enemy.getGold(enemy) << " Gold und besitzt nun " << this->getGold(hero) << " Gold." << endl;
+    cout << "Annina stiehlt " << enemy.getName() << " " << enemy.getGold() << " Gold und besitzt nun " << this->getGold() << " Gold." << endl;
 
     int enemyItemCount = 0;
 
@@ -101,11 +101,11 @@ void Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
 void Hero::sellAllItems(Hero &hero, int index) {
     if(index >= 0 && index < INVENTORY_SIZE){
         if(this->Inventory[index].getItemValidity()){
-            int new_gold = this->getGold(hero) + this->Inventory[index].getItemGold();
+            int new_gold = this->getGold() + this->Inventory[index].getItemGold();
             this->setGold(new_gold);
             this->removeInventoryItem(index);
             cout << "Gegenstand \"" << this->Inventory[index].getItemName() << "\" wurde verkauft." << endl;
-            cout << this->getName(hero) << " besitzt nun " << this->getGold(hero) << " Gold." << endl;
+            cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
         }
     }
 }
@@ -113,11 +113,11 @@ void Hero::sellAllItems(Hero &hero, int index) {
 void Hero::sellLootItems(Hero &hero, int index) {
     if(index >= 0 && index < INVENTORY_SIZE){
         if(this->Inventory[index].getItemValidity() && this->Inventory[index].getItemWon()){
-            int new_gold = this->getGold(hero) + this->Inventory[index].getItemGold();
+            int new_gold = this->getGold() + this->Inventory[index].getItemGold();
             this->setGold(new_gold);
             this->removeInventoryItem(index);
             cout << "Gegenstand \"" << this->Inventory[index].getItemName() << "\" wurde verkauft." << endl;
-            cout << this->getName(hero) << " besitzt nun " << this->getGold(hero) << " Gold." << endl;
+            cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
         }
     }
 }

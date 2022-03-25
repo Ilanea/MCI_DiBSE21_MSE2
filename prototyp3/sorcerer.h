@@ -27,7 +27,7 @@ public:
 
     virtual void attack(Hero &hero, Character &enemy) override;
 
-    int getMagicPower(const Character &character){
+    int getMagicPower(){
         return this->MagicPower;
     }
 

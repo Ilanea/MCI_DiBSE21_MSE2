@@ -1,26 +1,42 @@
-prototyp: main.o hero.o character.o item.o npc.o fighter.o sorcerer.o
-	g++ -o prototyp4 main.o hero.o character.o item.o npc.o fighter.o sorcerer.o
-    
-main.o: main.cpp
-	g++ -c -o main.o main.cpp
-    
-character.o: character.cpp character.h
-	g++ -c -o character.o character.cpp
-    
-hero.o: hero.cpp hero.h
-	g++ -c -o hero.o hero.cpp
-    
-item.o: item.cpp item.h
-	g++ -c -o item.o item.cpp
+# Name of the binary
+BINARY = prototyp4
+# Object files
+#hier alle .cpp-Files einfügen, aber mit Endung .o
+OBJS   = main.o character.o hero.o npc.o fighter.o sorcerer.o
+# Compiler flags
+CFLAGS = -Werror -Wall -std=c++17
+# Linker flags
+LFLAGS =
 
-npc.o: npc.cpp npc.h
-	g++ -c -o npc.o npc.cpp
 
-fighter.o: fighter.cpp fighter.h
-	g++ -c -o fighter.o fighter.cpp
-    
-sorcerer.o: sorcerer.cpp sorcerer.h
-	g++ -c -o sorcerer.o sorcerer.cpp
+# all target: builds all important targets
+all: ${BINARY}
 
-clean:
-	rm -rf item.o hero.o character.o npc.o fighter.o sorcerer.o main.o
+
+# Links the binary
+${BINARY} : ${OBJS}
+	g++ ${LFLAGS} -o ${BINARY} ${OBJS}
+
+
+# Compiles a source-file (any file with file extension .c) into an object-file
+#
+# "%" is a wildcard which matches every file-name (similar to * in regular expressions)
+# Such a rule is called a pattern rule (because it matches a pattern, see https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html),
+# which are a form of so called implicit rules (see https://www.gnu.org/software/make/manual/html_node/Implicit-Rules.html)
+# "$@" and "$<" are so called automatic variables (see https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html)
+%.o : %.cpp
+	g++ -c ${CFLAGS} -o $@ $<
+
+
+# Rules can not only be used for compiling a program but also for executing a program
+run: ${BINARY}
+	./${BINARY}
+
+
+# Delete all build artifacts
+clean :
+	rm -rf ${BINARY} ${OBJS}
+
+
+# all  and clean are a "phony" targets, meaning they are no files
+.PHONY : all clean

@@ -7,6 +7,7 @@
 
 #include <cstring>
 #include "item.h"
+#include "exception.h"
 
 
 #define INVENTORY_SIZE  10
@@ -26,19 +27,24 @@ protected:
     int MagicResistance;
     Item *Inventory[INVENTORY_SIZE] = {};
 
-    void setName(const string &newName){
-        this->Name = newName;
-    }
-
     void setGold(const int newGold){
-        this->Gold = newGold;
+        if(newGold < 0){
+            throw InvalidGoldException("Character::setGold(): Gold cannot be a negative value.");
+        }
+        else{
+            this->Gold = newGold;
+        }
     }
-
 
 public:
 
     //Konstruktor
     Character(const string &name, const int hp, const int gold, const int armor, const int magicresistance) : Name(name), HealthPoints(hp), Gold(gold), Armor(armor), MagicResistance(magicresistance), Inventory() {
+
+        if(name.empty() || hp < 0 || gold < 0){
+            throw InvalidConstructorException("Character::Constructor: Name cannot be empty, HP and Gold cannot have negative value.");
+        }
+
         cout << "Calling Character::Constructor" << std::endl;
     }
 
@@ -77,7 +83,12 @@ public:
     }
 
     Item *getInventoryItem(int index){
-        return Inventory[index];
+        if(index < 0 && index > INVENTORY_SIZE){
+            throw InventoryOutOfRange("Character::getInventoryItem: Inventory Check out of Range of Inventory Size.");
+        }
+        else{
+            return Inventory[index];
+        }
     }
 };
 

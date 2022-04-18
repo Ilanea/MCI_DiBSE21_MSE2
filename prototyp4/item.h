@@ -7,6 +7,7 @@
 
 
 #include <cstring>
+#include "exception.h"
 
 using namespace std;
 
@@ -24,6 +25,11 @@ public:
     Item(){};
 
     Item(Item &item, const string &name, const int gold) : ItemName(name), ItemGold(gold) {
+
+        if(name.empty() || gold < 0){
+            throw InvalidConstructorException("Item::Constructor: Name cannot be empty, Gold cannot have negative value.");
+        }
+
         cout << "Calling Item::Constructor" << std::endl;
     }
 
@@ -39,16 +45,17 @@ public:
         return this->ItemName;
     }
 
-    void setItemName(const string newItemName){
-        ItemName = newItemName;
-    }
-
     const int getItemGold(){
         return this->ItemGold;
     }
 
     void setItemGold(const int newItemGold){
-        ItemGold = newItemGold;
+        if(newItemGold < 0){
+            throw InvalidGoldException("Item::setItemGold(): Gold cannot be a negative value.");
+        }
+        else{
+            this->ItemGold = newItemGold;
+        }
     }
 
     const bool getEquipmentItem(){

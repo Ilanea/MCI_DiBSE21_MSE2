@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include "character.h"
 #include "hero.h"
+#include "exception.h"
 
 using namespace std;
 
@@ -64,7 +65,7 @@ void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
                 if(this->Inventory[INVENTORY_SIZE-1] != nullptr){
                     cout << "Das Inventar der Heldin ist voll und es koennen keine weiteren Gegenstaende mehr aufgenommen werden." << endl;
                     cout << "Der Gegenstand \"" << enemy.getInventoryItem(i)->getItemName() << "\" bleibt leider am Boden liegen." << endl;
-                    break;
+                    throw InventoryFull("Hero::retrieveRandomLoot: No more Space in Inventory.");
                 }
             }
         }
@@ -99,7 +100,7 @@ Item Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
         if(this->Inventory[INVENTORY_SIZE-1] != nullptr){
             cout << "Kein Platz mehr vorhanden!" << endl;
             cout << "Der Gegenstand \"" << enemy.getInventoryItem(randomItem)->getItemName() << "\" bleibt leider am Boden liegen." << endl;
-            break;
+            throw InventoryFull("Hero::retrieveRandomLoot: No more Space in Inventory.");
         }
     }
 
@@ -113,9 +114,14 @@ void Hero::sellAllItems(Hero &hero, int index) {
             int new_gold = this->getGold() + this->Inventory[index]->getItemGold();
             this->setGold(new_gold);
             cout << "Gegenstand \"" << this->Inventory[index]->getItemName() << "\" wurde verkauft." << endl;
-            this->removeInventoryItem(index);
+            //this->removeInventoryItem(index);
+            delete Inventory[index];
+            Inventory[index] = nullptr;
             cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
         }
+    }
+    else{
+        throw InventoryOutOfRange("Hero::sellAllItems: Inventory Check out of Range of Inventory Size.");
     }
 }
 
@@ -130,5 +136,8 @@ void Hero::sellLootItems(Hero &hero, int index) {
             Inventory[index] = nullptr;
             cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
         }
+    }
+    else{
+        throw InventoryOutOfRange("Hero::sellLootItems: Inventory Check out of Range of Inventory Size.");
     }
 }

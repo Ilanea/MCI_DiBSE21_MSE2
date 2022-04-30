@@ -2,6 +2,7 @@
 #include <ctime>
 #include "character.h"
 #include "hero.h"
+#include <memory>
 
 using namespace std;
 
@@ -13,20 +14,15 @@ int main() {
 
     try{
         Hero annina("Annina", 300, 90, 50, 50);
-        Item *zauberstab = new Item ((Item &) annina, "Zauberstab", 1000);
-        annina.addEquipmentItem(zauberstab);
+        annina.addEquipmentItem(std::shared_ptr<Item>(new Item((Item &) annina, "Zauberstab", 1000)));
 
         Fighter enemy_matthias("Matthias", 50, 71, 10, 5, 50);
-        Item *buch = new Item ((Item &) enemy_matthias, "C++ Buch", 1000);
-        enemy_matthias.addInventoryItem(buch);
-        Item *compiler = new Item ((Item &) enemy_matthias, "Magischer Compiler", 1001);
-        enemy_matthias.addInventoryItem(compiler);
+        enemy_matthias.addInventoryItem(std::shared_ptr<Item>(new Item((Item &) enemy_matthias, "C++ Buch", 1000)));
+        enemy_matthias.addInventoryItem(std::shared_ptr<Item>(new Item((Item &) enemy_matthias, "Magischer Compiler", 1001)));
 
         Sorcerer enemy_pascal("Pascal", 100, 27, 15, 5, 50);
-        Item *trank = new Item((Item &) enemy_pascal, "Mathe Trank", 10000);
-        enemy_pascal.addInventoryItem(trank);
-        Item *taschenrechner = new Item((Item &) enemy_pascal, "Taschenrechner", 5);
-        enemy_pascal.addInventoryItem(taschenrechner);
+        enemy_pascal.addInventoryItem(std::shared_ptr<Item>(new Item((Item &) enemy_pascal, "Mathe Trank", 10000)));
+        enemy_pascal.addInventoryItem(std::shared_ptr<Item>(new Item((Item &) enemy_pascal, "Taschenrechner", 5)));
 
         cout << "---------------------------------- Fight 1 ----------------------------------" << endl;
 

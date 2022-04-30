@@ -9,6 +9,7 @@
 #include "item.h"
 #include "exception.h"
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ protected:
     int Gold;
     int Armor;
     int MagicResistance;
-    vector<Item> Inventory;
+    vector<shared_ptr<Item>> Inventory;
 
     void setGold(const int newGold){
         if(newGold < 0){
@@ -52,9 +53,9 @@ public:
     virtual ~Character()= default;
 
     virtual void attack(Hero &hero, Character &enemy) = 0;
-    int addInventoryItem(Item *item);
+    int addInventoryItem(shared_ptr<Item> item);
     Item removeInventoryItem(int CharacterInventorySlot);
-    int addEquipmentItem(Item *item);
+    int addEquipmentItem(shared_ptr<Item> item);
     Item removeEquipmentItem(int InventorySlot);
 
     string getName(){
@@ -81,7 +82,7 @@ public:
         return this->MagicResistance;
     }
 
-    Item *getInventoryItem(int index){
+    shared_ptr<Item> *getInventoryItem(int index){
         if(index < 0 && index > Inventory.size()){
             throw InventoryOutOfRange("Character::getInventoryItem: Inventory Check out of Range of Inventory Size.");
         }

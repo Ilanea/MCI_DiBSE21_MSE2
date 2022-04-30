@@ -54,8 +54,8 @@ void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
 
     if(enemy.InventoryCount != 0){
         for(int index = enemy.InventoryCount-1; index >= 0; index--){
-            this->addInventoryItem(enemy.getInventoryItem(index));
-            this->Inventory.back().setEquipmentItem(false);
+            this->addInventoryItem(*enemy.getInventoryItem(index));
+            this->Inventory.back()->setEquipmentItem(false);
             enemy.removeInventoryItem(index);
             //cout << "Gegenstand \"" << enemy.CharacterInventory[i].getItemName() << "\" wurde zum Inventar der Heldin hinzugefuegt." << endl;
         }
@@ -66,7 +66,7 @@ void Hero::retrieveAllLoot(Hero &hero, Character &enemy){
 
 }
 
-Item Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
+shared_ptr<Item> Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
     int new_gold = this->getGold() + enemy.getGold();
     hero.setGold(new_gold);
     cout << "Annina stiehlt " << enemy.getName() << " " << enemy.getGold() << " Gold und besitzt nun " << this->getGold() << " Gold." << endl;
@@ -74,10 +74,10 @@ Item Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
     if(enemy.InventoryCount != 0){
         int randomItem = rand()%enemy.InventoryCount;
 
-        Item *lootItem = enemy.getInventoryItem(randomItem);
+        shared_ptr<Item> *lootItem = enemy.getInventoryItem(randomItem);
 
-        this->addInventoryItem(lootItem);
-        this->Inventory.back().setEquipmentItem(false);
+        this->addInventoryItem(*lootItem);
+        this->Inventory.back()->setEquipmentItem(false);
         enemy.removeInventoryItem(randomItem);
         //cout << "Gegenstand \"" << enemy.CharacterInventory[i].getItemName() << "\" wurde zum Inventar der Heldin hinzugefuegt." << endl;
 
@@ -92,10 +92,10 @@ Item Hero::retrieveRandomLoot(Hero &hero, Character &enemy){
 
 void Hero::sellLootItems(Hero &hero) {
     for(int index = hero.Inventory.size()-1; index >= 0; index--){
-        if(!this->Inventory[index].getEquipmentItem()){
-            int new_gold = this->getGold() + this->Inventory[index].getItemGold();
+        if(!this->Inventory[index]->getEquipmentItem()){
+            int new_gold = this->getGold() + this->Inventory[index]->getItemGold();
             this->setGold(new_gold);
-            cout << "Gegenstand \"" << this->Inventory[index].getItemName() << "\" wurde verkauft." << endl;
+            cout << "Gegenstand \"" << this->Inventory[index]->getItemName() << "\" wurde verkauft." << endl;
             this->removeInventoryItem(index);
             //Inventory.erase(Inventory.begin()+index);
             cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
@@ -105,9 +105,9 @@ void Hero::sellLootItems(Hero &hero) {
 
 void Hero::sellAllItems(Hero &hero) {
     for(int index = hero.Inventory.size()-1; index >= 0; index--){
-        int new_gold = this->getGold() + this->Inventory[index].getItemGold();
+        int new_gold = this->getGold() + this->Inventory[index]->getItemGold();
         this->setGold(new_gold);
-        cout << "Gegenstand \"" << this->Inventory[index].getItemName() << "\" wurde verkauft." << endl;
+        cout << "Gegenstand \"" << this->Inventory[index]->getItemName() << "\" wurde verkauft." << endl;
         this->removeInventoryItem(index);
         cout << this->getName() << " besitzt nun " << this->getGold() << " Gold." << endl;
     }

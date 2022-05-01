@@ -8,8 +8,6 @@
 #include <cstring>
 #include "character.h"
 
-using namespace std;
-
 class NPC : public Character
 {
 protected:
@@ -23,7 +21,7 @@ public:
 
     //Destruktor
     ~NPC() {
-        cout << "Der Gegner " << this->Name << " fiel in ein tiefes Loch und wurde nie wieder gesehen!" << endl;
+        std::cout << "Der Gegner " << this->Name << " fiel in ein tiefes Loch und wurde nie wieder gesehen!" << std::endl;
     }
 
     void setClass(const int newClass){

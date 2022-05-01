@@ -12,8 +12,6 @@
 #include "fighter.h"
 #include "sorcerer.h"
 
-using namespace std;
-
 class Hero : public Character
 {
 public:
@@ -22,13 +20,13 @@ public:
 
     //Destruktor
     ~Hero() {
-        cout << "Unsere Heldin " << this->Name << " verabschiedet sich vom Spiel und reitet in den Sonnenuntergang!" << endl;
+        std::cout << "Unsere Heldin " << this->Name << " verabschiedet sich vom Spiel und reitet in den Sonnenuntergang!" << std::endl;
     }
 
     void attack(Hero &hero, Character &enemy) override;
     bool fight(Hero &hero, Character &enemy);
     void retrieveAllLoot(Hero &hero, Character &enemy);
-    shared_ptr<Item> retrieveRandomLoot(Hero &hero, Character &enemy);
+    std::shared_ptr<Item> retrieveRandomLoot(Hero &hero, Character &enemy);
     void sellAllItems(Hero &hero);
     void sellLootItems(Hero &hero);
 

@@ -8,8 +8,6 @@
 #include <cstring>
 #include "npc.h"
 
-using namespace std;
-
 class Sorcerer : public NPC
 {
 protected:
@@ -17,9 +15,9 @@ protected:
 
 public:
 
-    Sorcerer(const string &Name, const int HealthPoints, const int Gold, const int Armor, const int MagicResistance, const int magicpower) :  NPC(Name, HealthPoints, Gold, Armor, MagicResistance), MagicPower(magicpower) {
+    Sorcerer(const std::string &Name, const int HealthPoints, const int Gold, const int Armor, const int MagicResistance, const int magicpower) :  NPC(Name, HealthPoints, Gold, Armor, MagicResistance), MagicPower(magicpower) {
         setClass(2);
-        //cout << "Calling Sorcerer::Constructor" << std::endl;
+        //std::cout << "Calling Sorcerer::Constructor" << std::endl;
     }
 
     //Destruktor
@@ -33,6 +31,6 @@ public:
 
 };
 
-ostream &operator<<(ostream &out, const Sorcerer &c);
+std::ostream &operator<<(std::ostream &out, const Sorcerer &c);
 
 #endif //PROTOTYP5_SORCERER_H

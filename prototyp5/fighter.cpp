@@ -14,6 +14,6 @@ void Fighter::attack(Hero &hero, Character &enemy){
     //cout << "Armor: " << hero.getArmor(hero) << endl;
     //cout << "Damage: " << damage << endl;
     hero.setHealthPoints(newHP);
-    cout << enemy.getName() << " trifft " << hero.getName() << " mit Staerkeschaden fuer " << damage << " Lebenspunkte!" << endl;
+    std::cout << enemy.getName() << " trifft " << hero.getName() << " mit Staerkeschaden fuer " << damage << " Lebenspunkte!" << std::endl;
     //cout << "-------------------------------------------------------------------------" << endl;
 }

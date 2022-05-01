@@ -11,20 +11,18 @@
 #include <vector>
 #include <memory>
 
-using namespace std;
-
 class Hero;
 
 class Character
 {
 
 protected:
-    string Name;
+    std::string Name;
     int HealthPoints;
     int Gold;
     int Armor;
     int MagicResistance;
-    vector<shared_ptr<Item>> Inventory;
+    std::vector<std::shared_ptr<Item>> Inventory;
 
     void setGold(const int newGold){
         if(newGold < 0){
@@ -40,7 +38,7 @@ public:
     int InventoryCount=0;
 
     //Konstruktor
-    Character(const string &name, const int hp, const int gold, const int armor, const int magicresistance) : Name(name), HealthPoints(hp), Gold(gold), Armor(armor), MagicResistance(magicresistance), Inventory() {
+    Character(const std::string &name, const int hp, const int gold, const int armor, const int magicresistance) : Name(name), HealthPoints(hp), Gold(gold), Armor(armor), MagicResistance(magicresistance), Inventory() {
 
         if(name.empty() || hp < 0 || gold < 0){
             throw InvalidConstructorException("Character::Constructor: Name cannot be empty, HP and Gold cannot have negative value.");
@@ -53,12 +51,12 @@ public:
     virtual ~Character()= default;
 
     virtual void attack(Hero &hero, Character &enemy) = 0;
-    int addInventoryItem(shared_ptr<Item> item);
+    int addInventoryItem(std::shared_ptr<Item> item);
     Item removeInventoryItem(int CharacterInventorySlot);
-    int addEquipmentItem(shared_ptr<Item> item);
+    int addEquipmentItem(std::shared_ptr<Item> item);
     Item removeEquipmentItem(int InventorySlot);
 
-    string getName(){
+    std::string getName(){
         return this->Name;
     }
 
@@ -82,7 +80,7 @@ public:
         return this->MagicResistance;
     }
 
-    shared_ptr<Item> *getInventoryItem(int index){
+    std::shared_ptr<Item> *getInventoryItem(int index){
         if(index < 0 && index > Inventory.size()){
             throw InventoryOutOfRange("Character::getInventoryItem: Inventory Check out of Range of Inventory Size.");
         }

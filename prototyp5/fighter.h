@@ -8,8 +8,6 @@
 #include <cstring>
 #include "npc.h"
 
-using namespace std;
-
 class Fighter : public NPC
 {
 protected:
@@ -17,7 +15,7 @@ protected:
 
 public:
 
-    Fighter(const string &Name, const int HealthPoints, const int Gold, const int Armor, const int MagicResistance, const int strenght) :  NPC(Name, HealthPoints, Gold, Armor, MagicResistance), Strenght(strenght) {
+    Fighter(const std::string &Name, const int HealthPoints, const int Gold, const int Armor, const int MagicResistance, const int strenght) :  NPC(Name, HealthPoints, Gold, Armor, MagicResistance), Strenght(strenght) {
         setClass(1);
         //cout << "Calling Fighter::Constructor" << std::endl;
     }
@@ -33,6 +31,6 @@ public:
 
 };
 
-ostream &operator<<(ostream &out, const Fighter &c);
+std::ostream &operator<<(std::ostream &out, const Fighter &c);
 
 #endif //PROTOTYP5_FIGHTER_H

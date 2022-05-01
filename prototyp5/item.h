@@ -9,13 +9,11 @@
 #include <cstring>
 #include "exception.h"
 
-using namespace std;
-
 class Item
 {
 
 private:
-    string ItemName;
+    std::string ItemName;
     int ItemGold;
     bool isEquipment=false;
 
@@ -24,24 +22,24 @@ public:
     //Konstruktor
     Item(){};
 
-    Item(Item &item, const string &name, const int gold) : ItemName(name), ItemGold(gold) {
+    Item(Item &item, const std::string &name, const int gold) : ItemName(name), ItemGold(gold) {
 
         if(name.empty() || gold < 0){
             throw InvalidConstructorException("Item::Constructor: Name cannot be empty, Gold cannot have negative value.");
         }
 
-        //cout << "Calling Item::Constructor" << std::endl;
+        //std::cout << "Calling Item::Constructor" << std::endl;
     }
 
     //Destruktor
     ~Item(){
-        //cout << "Calling Item::Destructor" << std::endl;
+        //std::cout << "Calling Item::Destructor" << std::endl;
     }
 
     //void initItem(Item &item, const string &name, int gold);
     //void initItem(Item &item);
 
-    const string getItemName(){
+    const std::string getItemName(){
         return this->ItemName;
     }
 

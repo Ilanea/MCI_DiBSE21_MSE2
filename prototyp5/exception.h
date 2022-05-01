@@ -49,4 +49,22 @@ public:
     using GameException::GameException;
 };
 
+class CharacterAlreadyExists : public GameException
+{
+public:
+    using GameException::GameException;
+};
+
+class CharacterDoesNotExists : public GameException
+{
+public:
+    using GameException::GameException;
+};
+
+class ItemAlreadyExists : public GameException
+{
+public:
+    using GameException::GameException;
+};
+
 #endif //PROTOTYP5_EXCEPTION_H

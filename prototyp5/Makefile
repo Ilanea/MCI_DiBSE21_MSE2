@@ -2,7 +2,7 @@
 BINARY = prototyp5
 # Object files
 #hier alle .cpp-Files einfügen, aber mit Endung .o
-OBJS   = main.o character.o hero.o npc.o fighter.o sorcerer.o
+OBJS   = main.o game.o character.o hero.o npc.o fighter.o sorcerer.o
 # Compiler flags
 CFLAGS = -Werror -Wall -std=c++17
 # Linker flags

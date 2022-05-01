@@ -81,7 +81,7 @@ public:
     }
 
     std::shared_ptr<Item> *getInventoryItem(int index){
-        if(index < 0 && index > Inventory.size()){
+        if(index < 0 && index > InventoryCount){
             throw InventoryOutOfRange("Character::getInventoryItem: Inventory Check out of Range of Inventory Size.");
         }
         else{

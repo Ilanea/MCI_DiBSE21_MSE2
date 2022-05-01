@@ -37,7 +37,7 @@ int Character::addEquipmentItem(std::shared_ptr<Item> item){
 }
 
 Item Character::removeEquipmentItem(int slot){
-    if(slot >= 0 && slot <=Inventory.size()) {
+    if(slot >= 0 && slot <= InventoryCount) {
         if (this->Inventory[slot]->getEquipmentItem()) {
             auto retval = Inventory[slot];
             std::cout << "Der Gegenstand \"" << this->Inventory[slot]->getItemName() << "\" wurde aus dem Equipment von " << this->getName() << " entfernt." << std::endl;

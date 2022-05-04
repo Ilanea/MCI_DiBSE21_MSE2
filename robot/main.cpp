@@ -14,6 +14,10 @@ int main() {
 
         robot.eventLoop(10);
 
+        robot.deleteSensor(1);
+        robot.deleteSensor(2);
+        robot.deleteSensor(3);
+
     }  catch (std::exception &error){
         std::cerr << "Exception in Main: " << error.what() << std::endl;
     }

@@ -23,6 +23,7 @@ Sensor *Robot::getSensor(int id){
 
 void Robot::deleteSensor(int id){
     Sensors.erase(id);
+    std::cout << "Sensor #" << id << " geloescht!" << std::endl;
 }
 
 void Robot::eventLoop(int iterations){
@@ -51,7 +52,9 @@ void Robot::eventLoop(int iterations){
                 catch (CriticalDangerException &e) {
                     motor.emergencyBrake();
                     Notstopp = true;
-                    NotfallCount = 5;
+                    if(NotfallCount == 0){
+                        NotfallCount = 5;
+                    }
                 }
                 catch (InternalErrorException &e){
                     std::cout << "Sensorfehler, setze minimale Geschwindigkeit!" << std::endl;
@@ -91,6 +94,8 @@ void Robot::eventLoop(int iterations){
             SensorError = false;
         }
 
+        std::cout << "-------------------------------------------------------" << std::endl;
+
         if (iterations > 0) {
             iterations--;
             if (iterations <= 0) {
@@ -100,6 +105,5 @@ void Robot::eventLoop(int iterations){
         sleep(1);
         Durchlauf++;
 
-        std::cout << "-------------------------------------------------------" << std::endl;
     }
 }

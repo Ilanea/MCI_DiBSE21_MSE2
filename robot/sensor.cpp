@@ -18,7 +18,7 @@ int camerasensor::checkSensor() {
         throw InternalErrorException("camerasensor::checkSensor: Internal Error im Abstandsensor.");
     }
     else{
-        int Gefahrenlevel = rand() % 6;
+        int Gefahrenlevel = rand() % 7;
         return Gefahrenlevel;
     }
 
@@ -34,7 +34,7 @@ int distancesensor::checkSensor() {
         throw InternalErrorException("camerasensor::checkSensor: Internal Error im Abstandsensor.");
     }
     else{
-        int Gefahrenlevel = rand() % 4;
+        int Gefahrenlevel = rand() % 5;
         return Gefahrenlevel;
     }
 
@@ -50,7 +50,7 @@ int cliffsensor::checkSensor() {
         throw InternalErrorException("camerasensor::checkSensor: Internal Error im Abstandsensor.");
     }
     else{
-        int Gefahrenlevel = rand() % 9;
+        int Gefahrenlevel = rand() % 10;
         return Gefahrenlevel;
     }
 

@@ -22,6 +22,7 @@ Sensor *Robot::getSensor(int id){
 }
 
 void Robot::deleteSensor(int id){
+    delete getSensor(id);
     Sensors.erase(id);
     std::cout << "Sensor #" << id << " geloescht!" << std::endl;
 }

@@ -24,7 +24,7 @@ int main() {
         std::cout << "Wir haben " << factory->getProductACount() << " Stueck von Produkt A." << std::endl;
         std::cout << "Wir haben " << factory->getProductBCount() << " Stueck von Produkt B." << std::endl;
 
-
+        delete factory;
 
     }  catch (std::exception &error){
         std::cerr << "Exception in Main: " << error.what() << std::endl;

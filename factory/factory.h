@@ -25,9 +25,12 @@ protected:
 public:
     ~Factory(){
         std::cout << "Factory Destructor!" << std::endl;
-        for(int i=0; i <= this->getMachineCount(); i++){
-            if(this->getMachine(i) != nullptr){
-                this->deleteMachine(i);
+        if(this->Machines.size() != 0){
+            for(int i=0; i <= this->Machines.size(); i++){
+                if(this->getMachine(i) != nullptr){
+                    this->deleteMachine(i);
+                    std::cout << "Loesche Maschine #" << i << std::endl;
+                }
             }
         }
         Machines.clear();

@@ -10,19 +10,19 @@ int main() {
 
     try{
 
-        Factory factory;
+        Factory *factory = new Factory();
 
-        Machine* machineA = new(MachineA);
-        Machine* machineB = new(MachineB);
-        factory.addMachine(machineA);
-        factory.addMachine(machineB);
-        machineA->setFactory(&factory);
-        machineB->setFactory(&factory);
+        Machine* machineA = new MachineA();
+        Machine* machineB = new MachineB();
+        factory->addMachine(machineA);
+        factory->addMachine(machineB);
+        machineA->setFactory(factory);
+        machineB->setFactory(factory);
 
-        factory.run(10);
+        factory->run(10);
 
-        std::cout << "Wir haben " << factory.getProductACount() << " Stueck von Produkt A." << std::endl;
-        std::cout << "Wir haben " << factory.getProductBCount() << " Stueck von Produkt B." << std::endl;
+        std::cout << "Wir haben " << factory->getProductACount() << " Stueck von Produkt A." << std::endl;
+        std::cout << "Wir haben " << factory->getProductBCount() << " Stueck von Produkt B." << std::endl;
 
 
 

@@ -19,7 +19,7 @@ int main() {
         machineA->setFactory(factory);
         machineB->setFactory(factory);
 
-        factory->run(10);
+        factory->run(100);
 
         std::cout << "Wir haben " << factory->getProductACount() << " Stueck von Produkt A." << std::endl;
         std::cout << "Wir haben " << factory->getProductBCount() << " Stueck von Produkt B." << std::endl;

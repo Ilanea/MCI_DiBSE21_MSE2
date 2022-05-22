@@ -110,6 +110,11 @@ void Factory::run(unsigned int iterations) {
             }
         }
 
+        if(getMachineCount() == 0){
+            std::cout << "Wir haben keine Maschinen mehr, beende die Produktion." << std::endl;
+            break;
+        }
+
         for (unsigned id: deletedList) {
             this->deleteMachine(id);
         }

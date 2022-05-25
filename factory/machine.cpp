@@ -5,7 +5,6 @@
 #include "machine.h"
 #include <algorithm>
 #include "exception.h"
-#include "product.h"
 
 void Machine::setFactory(Factory* f){
     this->factory = f;

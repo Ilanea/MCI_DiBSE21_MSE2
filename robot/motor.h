@@ -15,7 +15,7 @@ public:
     ~Motor(){}
 
     void setSpeed(int speed);
-    int const getSpeed();
+    int getSpeed();
     void emergencyBrake();
 };
 

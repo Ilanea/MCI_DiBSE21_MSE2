@@ -3,9 +3,6 @@
 //
 
 #include "sensor.h"
-#include <iostream>
-#include <ctime>
-#include <algorithm>
 #include "exception.h"
 
 int camerasensor::checkSensor() {

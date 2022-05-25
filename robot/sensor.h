@@ -5,12 +5,15 @@
 #ifndef ROBOT_SENSOR_H
 #define ROBOT_SENSOR_H
 
+#include <iostream>
 
 class Sensor {
 public:
     Sensor(){}
 
-    virtual ~Sensor(){}
+    virtual ~Sensor(){
+        std::cout << "Sensor Destructor!" << std::endl;
+    }
 
     virtual int checkSensor() = 0;
 };

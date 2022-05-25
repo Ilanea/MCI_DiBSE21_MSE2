@@ -1,8 +1,11 @@
 #include <iostream>
+#include <ctime>
 #include "motor.h"
 #include "robot.h"
 
 int main() {
+
+    srand((unsigned) time(NULL));
 
     try{
 

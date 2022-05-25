@@ -2,11 +2,10 @@
 #include <ctime>
 #include <iostream>
 #include "factory.h"
-#include "machine.h"
 
 int main() {
 
-    srand(time(nullptr));
+    srand((unsigned) time(NULL));
 
     try{
 
